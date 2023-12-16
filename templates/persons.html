@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Persons List</h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in persons %}
+                <tr>
+                    <td>{{ person.id }}</td>
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.age }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_person', id=person.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ url_for('delete_person', id=person.id) }}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('add_person') }}" class="btn btn-primary">Add Person</a>
+{% endblock %}
