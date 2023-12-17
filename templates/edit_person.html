@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Person - Persons List</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">People List</h1>
+        <h2 class="text-center mb-4">Edit Person</h2>
+
+        <form method="post">
+            <!-- Current Name Section -->
+            <div class="form-group row">
+                <label for="currentName" class="col-sm-3 col-form-label text-right mb-0 person-name">Current ID:</label>
+                <div class="col-sm-9">
+                    <h4 class="mb-0 person-name">{{ person.id }}</h4>
+            </div>
+            </div>
+            <!-- Current Name Section -->
+            <div class="form-group row">
+                <label for="currentName" class="col-sm-3 col-form-label text-right person-name">Current Name:</label>
+                <div class="col-sm-9">
+                    <h4 class="mb-0 person-name">{{ person.name }}</h4>
+                </div>
+            </div>
+                    
+        
+            <!-- New Name Section -->
+            <div class="form-group row">
+                <label for="newName" class="col-sm-3 col-form-label text-right person-name">New Name:</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="newName" name="name" value="{{ person.name }}" required>
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit" class="btn btn-info">Update</button>
+                </div>
+            </div>
+            <!-- <div class="form-group row">    
+                <label for="newId" class="col-sm-3 col-form-label text-right person-name">New Id:</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" id="newId" name="name" value="{{ person.id }}" required>
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit" class="btn btn-info">Update</button>
+                </div>
+            </div> -->
+        </form>
+
+        <a href="{{ url_for('list_persons') }}" class="btn btn-secondary">Back to List</a>
+    </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
