@@ -8,12 +8,22 @@
     <link rel="stylesheet" href="./static/style.css">
 </head>
 <body>
-    <div class="container">
-    <h1 class="text-center">People List</h1>
-    <h2 class="text-center mb-4">add person to create your list</h2>
-    <a href="{{ url_for('add_person') }}" class="btn btn-primary text-center">Add Person</a>
-    </div>
 
+    <div class="container">
+        <h1 class="text-center">People List</h1>
+        <h2 class="text-center mb-4">add person to create your list</h2>
+
+        <!-- Add Person button and Search input -->
+        <div class="d-flex justify-content-between align-items-center">
+            <a href="{{ url_for('add_person') }}" class="btn btn-primary text-center">Add Person</a>
+            <form class="form-inline" method="get" action="{{ url_for('list_persons') }}">
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" name="search" placeholder="Search" value="{{ search_query }}">
+                </div>
+                <button type="submit" class="btn btn-secondary mb-2">Search</button>
+            </form>
+        </div>
+    </div>
     <div class="container custom-container">
         <ul class="list-group custom-list-group">
             {% for person in persons %}
@@ -34,6 +44,38 @@
             {% endfor %}
         </ul>
     </div>
+                <!-- Pagination links -->
+        <footer>
+            <nav aria-label="Persons Pagination">
+                <ul class="pagination justify-content-center">
+                    {% if persons.has_prev %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ url_for('list_persons', page=persons.prev_num) }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    {% for num in persons.iter_pages() %}
+                        {% if num %}
+                            <li class="page-item{% if num == persons.page %} active{% endif %}">
+                                <a class="page-link" href="{{ url_for('list_persons', page=num) }}">{{ num }}</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if persons.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ url_for('list_persons', page=persons.next_num) }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </footer>
 
     <!-- Include Bootstrap JS (optional) -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
