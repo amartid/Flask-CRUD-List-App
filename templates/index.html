@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Persons List - Home</title>
+    <title>People List - Home</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./static/style.css">
 </head>
@@ -45,9 +45,9 @@
         </ul>
     </div>
                 <!-- Pagination links -->
-        <footer>
+        <footer class="footer" style="margin-top: 20px;">
             <nav aria-label="Persons Pagination">
-                <ul class="pagination justify-content-center">
+                <ul class="pagination justify-content-center ">
                     {% if persons.has_prev %}
                         <li class="page-item">
                             <a class="page-link" href="{{ url_for('list_persons', page=persons.prev_num) }}" aria-label="Previous">
