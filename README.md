@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Persons List App is a CRUD web app built using Flask web framework and SQLite to store the database. It allows users to manage a list of persons, providing functionality to add, edit, and delete person entries.
+The People List App is a CRUD web app built using Flask web framework and SQLite to store the database. It allows users to manage a list of persons, providing functionality to add, edit, and delete person entries. App handles form validation, pagination (5 people per page) and search functionality for the list of people.
 
 ## Features
 
@@ -26,3 +26,5 @@ The Persons List App is a CRUD web app built using Flask web framework and SQLit
 - Navigate to http://localhost:5000/ to view the list of persons.
 - Click on "Add Person" to add a new person.
 - Edit or delete persons using the provided buttons.
+- Change Page if people more than 5.
+- Search Person functionality.
